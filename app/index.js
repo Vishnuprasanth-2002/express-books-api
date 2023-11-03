@@ -1,8 +1,9 @@
 const express = require("express");
 const morgan = require("morgan");
-const { getAllBooks, addBook } = require("./db");
+const { getAllBooks, addBook, addRating } = require("./db");
 const { bookSchema } = require("./Validation/book.schema");
 const { validate } = require("./Validation/validate.middleware");
+const Joi = require("joi");
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.post("/books", (req, res) => {
       message: error.details.map((d) => d.message),
     });
   }
-  const book = addBook(req.xop);
+  const book = addBook(value);
   return res.send(book);
 });
 
