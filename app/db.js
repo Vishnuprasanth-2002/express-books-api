@@ -25,14 +25,14 @@ const books = [
   },
 ];
 
-// const booksRatings = [
-//   {
-//     id: 200,
-//     ratings: 4,
-//     bookId: 1234,
-//     // userId: 100,
-//   },
-// ];
+const booksRatings = [
+  {
+    id: 200,
+    ratings: 4,
+    bookId: 1234,
+    // userId: 100,
+  },
+];
 
 const getAllBooks = () => books;
 const addBook = ({ title, isbn }) => {
@@ -47,7 +47,20 @@ const addBook = ({ title, isbn }) => {
     return b;
   } else console.log("Invalid");
 };
+
+const addRating = ({ rating, bookId }) => {
+  const ratingId = uuidv4();
+
+  const bookRating = {
+    ratingId,
+    rating,
+    bookId,
+  };
+  booksRatings.push(bookRating);
+  return bookRating;
+};
 module.exports = {
   getAllBooks,
   addBook,
+  addRating,
 };
