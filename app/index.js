@@ -16,21 +16,39 @@ app.get(
     res.send(books);
   })
 );
-app.post(
-  "/books",
-  validate(
-    (bookSchema = Joi.object({
-      title: Joi.string().required(),
-      isbn: Joi.string().required(),
-    }))
-  ),
-  (AddBookController = (req, res) => {
-    const book = addBook(req.xop);
-    res.send(book);
-  })
-);
-app.put("/:id", validate(movieSchema), updateMovieController);
+app.post("/books", (req, res) => {
+  const AddbookSchema = Joi.object({
+    title: Joi.string().required(),
+    isbn: Joi.string().required(),
+  });
+  const { value, error } = AddbookSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({
+      message: error.details.map((d) => d.message),
+    });
+  }
+  const book = addBook(req.xop);
+  return res.send(book);
+});
 
+app.post("/books/:id/rating", (req, res) => {
+  const ratingSchema = Joi.object({
+    rating: Joi.number().min(0).max(5).required(),
+  });
+
+  const { value, error } = ratingSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({
+      message: error.details.map((d) => d.message),
+    });
+  }
+
+  const rating = addRating({
+    rating: req.body.rating,
+    bookId: req.params.id,
+  });
+  return res.json(rating);
+});
 app.use(
   (errorHandler = (err, req, res, next) => {
     res.status(err.status || 500).json({
