@@ -101,6 +101,15 @@ const deleteBookById = (id) => {
   return b;
 };
 
+const updateRating = ({ rating, bookId }) => {
+  const idx = booksRatings.findIndex((b) => b.id == bookId);
+  if (idx != -1) {
+    booksRatings[idx]["rating"] = rating;
+    return booksRatings[idx];
+  }
+  return null;
+};
+
 module.exports = {
   getAllBooks,
   addBook,
@@ -108,4 +117,5 @@ module.exports = {
   getBookById,
   editBookById,
   deleteBookById,
+  updateRating,
 };

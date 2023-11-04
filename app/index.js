@@ -7,6 +7,7 @@ const {
   getBookById,
   editBookById,
   deleteBookById,
+  updateRating,
 } = require("./db");
 const Joi = require("joi");
 
@@ -89,6 +90,29 @@ app.delete("/books/:bookid", (req, res) => {
     });
   }
   res.send(b);
+});
+app.put("books/:bookid/rating", (req, res) => {
+  const ratingSchema = Joi.object({
+    rating: Joi.number().min(0).max(5).required(),
+  });
+
+  const { value, error } = ratingSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({
+      message: error.details.map((d) => d.message),
+    });
+  }
+
+  const rating = updateRating({
+    rating: req.body.rating,
+    bookId: req.params.bookid,
+  });
+  if (!rating) {
+    return res.status(400).json({
+      message: "rating not found",
+    });
+  }
+  return res.json(rating);
 });
 // app.use(
 //   (errorHandler = (err, req, res, next) => {
