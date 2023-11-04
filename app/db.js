@@ -28,7 +28,7 @@ const books = [
 const booksRatings = [
   {
     id: 200,
-    ratings: 4,
+    rating: 3,
     bookId: 1234,
     // userId: 100,
   },
@@ -59,8 +59,48 @@ const addRating = ({ rating, bookId }) => {
   booksRatings.push(bookRating);
   return bookRating;
 };
+const getBookById = (id) => {
+  const book = books.find((b) => b.id == id);
+
+  if (!book) {
+    return null;
+  }
+
+  const ratingEntry = booksRatings.find((b) => b.bookId == id);
+
+  const rating = ratingEntry ? ratingEntry.rating : 0;
+
+  b = {
+    id: book.id,
+    title: book.title,
+    isbn: book.isbn,
+    rating: rating,
+  };
+  return b;
+};
+const editBookById = ({ id, title }) => {
+  const idx = books.findIndex((b) => b.id == id);
+  if (idx != -1) {
+    books[idx]["title"] = title;
+    return books[idx];
+  }
+  return null;
+};
+const deleteBookById = (id) => {
+  const idx = books.findIndex((b) => b.id == id);
+  if (idx == -1) {
+    return null;
+  }
+  const b = books[idx];
+  books.splice(idx, 1);
+  return b;
+};
+
 module.exports = {
   getAllBooks,
   addBook,
   addRating,
+  getBookById,
+  editBookById,
+  deleteBookById,
 };
