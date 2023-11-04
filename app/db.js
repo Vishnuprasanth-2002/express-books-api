@@ -102,7 +102,7 @@ const deleteBookById = (id) => {
 };
 
 const updateRating = ({ rating, bookId }) => {
-  const idx = booksRatings.findIndex((b) => b.id == bookId);
+  const idx = booksRatings.findIndex((b) => b.bookId == bookId);
   if (idx != -1) {
     booksRatings[idx]["rating"] = rating;
     return booksRatings[idx];
