@@ -88,11 +88,16 @@ const editBookById = ({ id, title }) => {
 };
 const deleteBookById = (id) => {
   const idx = books.findIndex((b) => b.id == id);
+  const ratingidx = booksRatings.findIndex((b) => b.bookId == id);
   if (idx == -1) {
     return null;
   }
   const b = books[idx];
   books.splice(idx, 1);
+  if (ratingidx !== -1) {
+    const r = books[ratingidx];
+    booksRatings.splice(ratingidx, 1);
+  }
   return b;
 };
 
