@@ -127,7 +127,8 @@ const deleteRatingById = (id) => {
   if (idx == -1) {
     return null;
   }
-  const deletedRating = booksRatings.splice(idx, 1);
+  const deletedRating = booksRatings[idx];
+  booksRatings.splice(idx, 1);
   return deletedRating;
 };
 module.exports = {
