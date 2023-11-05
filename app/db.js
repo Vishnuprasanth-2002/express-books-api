@@ -25,14 +25,14 @@ const books = [
   },
 ];
 
-const booksRatings = [
-  {
-    id: 200,
-    rating: 3,
-    bookId: 1234,
-    // userId: 100,
-  },
-];
+// const booksRatings = [
+//   {
+//     id: 200,
+//     rating: 3,
+//     bookId: 1234,
+//     // userId: 100,
+//   },
+// ];
 
 const getAllBooks = () => books;
 const addBook = ({ title, isbn }) => {
