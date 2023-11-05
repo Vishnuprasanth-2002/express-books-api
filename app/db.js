@@ -52,7 +52,7 @@ const addRating = ({ rating, bookId }) => {
   const ratingId = uuidv4();
 
   const bookRating = {
-    ratingId,
+    id: ratingId,
     rating,
     bookId,
   };
@@ -110,6 +110,26 @@ const updateRating = ({ rating, bookId }) => {
   return null;
 };
 
+const getRatingById = (id) => {
+  const rating = booksRatings.find((r) => r.id == id);
+  if (!rating) {
+    return null;
+  }
+  const book = books.find((b) => b.id == rating.bookId);
+  return {
+    id: rating.id,
+    rating: rating.rating,
+    book,
+  };
+};
+const deleteRatingById = (id) => {
+  const idx = booksRatings.findIndex((r) => r.id == id);
+  if (idx == -1) {
+    return null;
+  }
+  const deletedRating = booksRatings.splice(idx, 1);
+  return deletedRating;
+};
 module.exports = {
   getAllBooks,
   addBook,
@@ -118,4 +138,6 @@ module.exports = {
   editBookById,
   deleteBookById,
   updateRating,
+  getRatingById,
+  deleteRatingById,
 };

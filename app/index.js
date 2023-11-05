@@ -8,6 +8,8 @@ const {
   editBookById,
   deleteBookById,
   updateRating,
+  getRatingById,
+  deleteRatingById,
 } = require("./db");
 const Joi = require("joi");
 
@@ -91,7 +93,16 @@ app.delete("/books/:bookid", (req, res) => {
   }
   res.send(b);
 });
-app.put("books/:bookid/rating", (req, res) => {
+app.put("/books/:bookid/rating", (req, res) => {
+  const rating = updateRating({
+    rating: req.body.rating,
+    bookId: req.params.bookid,
+  });
+  if (!rating) {
+    return res.status(400).json({
+      message: "rating not found",
+    });
+  }
   const ratingSchema = Joi.object({
     rating: Joi.number().min(0).max(5).required(),
   });
@@ -103,13 +114,23 @@ app.put("books/:bookid/rating", (req, res) => {
     });
   }
 
-  const rating = updateRating({
-    rating: req.body.rating,
-    bookId: req.params.bookid,
-  });
-  if (!rating) {
+  return res.json(rating);
+});
+app.get("/rating/:ratingid", (req, res) => {
+  const book = getRatingById(req.params.ratingid);
+  if (!book) {
     return res.status(400).json({
       message: "rating not found",
+    });
+  }
+  return res.send(book);
+});
+
+app.delete("/rating/:ratingid", (req, res) => {
+  const rating = deleteRatingById(req.params.ratingid);
+  if (!rating) {
+    return res.status(400).json({
+      message: "rating not found ",
     });
   }
   return res.json(rating);
