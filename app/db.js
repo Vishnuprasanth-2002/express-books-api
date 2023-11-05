@@ -17,22 +17,22 @@ const { isValidISBN } = require("./Validation/ISBN_validation");
 //   bookId: bookid,
 // };
 
-// const books = [
-//   {
-//     id: 1234,
-//     title: "wings of fire",
-//     isbn: "007462542X",
-//   },
-// ];
+const books = [
+  {
+    id: 1234,
+    title: "wings of fire",
+    isbn: "007462542X",
+  },
+];
 
-// const booksRatings = [
-//   {
-//     id: 200,
-//     rating: 3,
-//     bookId: 1234,
-//     // userId: 100,
-//   },
-// ];
+const booksRatings = [
+  {
+    id: 200,
+    rating: 3,
+    bookId: 1234,
+    // userId: 100,
+  },
+];
 
 const getAllBooks = () => books;
 const addBook = ({ title, isbn }) => {
@@ -95,8 +95,12 @@ const deleteBookById = (id) => {
   const b = books[idx];
   books.splice(idx, 1);
   if (ratingidx !== -1) {
-    const r = books[ratingidx];
+    const r = booksRatings[ratingidx];
     booksRatings.splice(ratingidx, 1);
+    return {
+      b,
+      r,
+    };
   }
   return b;
 };
