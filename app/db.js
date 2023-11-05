@@ -17,13 +17,13 @@ const { isValidISBN } = require("./Validation/ISBN_validation");
 //   bookId: bookid,
 // };
 
-const books = [
-  {
-    id: 1234,
-    title: "wings of fire",
-    isbn: "007462542X",
-  },
-];
+// const books = [
+//   {
+//     id: 1234,
+//     title: "wings of fire",
+//     isbn: "007462542X",
+//   },
+// ];
 
 // const booksRatings = [
 //   {
