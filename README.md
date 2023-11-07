@@ -14,7 +14,11 @@ Response:
         title: '',
         isbn: '',
     },
-
+    {
+        id: 216,
+        title: '',
+        isbn: '',
+    },
 ]
 
 ```
@@ -46,7 +50,7 @@ Request:
 {
     id: 216,
     title: '',
-    isbn: '', // validation
+    isbn: '',
     rating: 4,
 }
 ```
