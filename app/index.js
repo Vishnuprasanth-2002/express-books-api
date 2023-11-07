@@ -135,13 +135,7 @@ app.delete("/rating/:ratingid", (req, res) => {
   }
   return res.json(rating);
 });
-// app.use(
-//   (errorHandler = (err, req, res, next) => {
-//     res.status(err.status || 500).json({
-//       message: err.message || ["An unknown error"],
-//     });
-//   })
-// );
+;
 
 app.listen(3000, () => {
   console.log("Server running on 3000");
