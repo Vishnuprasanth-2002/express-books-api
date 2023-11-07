@@ -1,22 +1,6 @@
 const { v4: uuidv4 } = require("uuid");
 const { isValidISBN } = require("./Validation/ISBN_validation");
 
-// const users = [
-//   {
-//     id: 100,
-//     name: "Ram",
-//   },
-// ];
-
-// const bookid = uuidv4();
-
-// const newBook = {
-//   id: bookid,
-// };
-// const bookRating = {
-//   bookId: bookid,
-// };
-
 const books = [
   {
     id: 1234,
