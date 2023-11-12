@@ -66,7 +66,7 @@ no isbn should be passed
 ## 6. DEL /books/:bookid
 
 ```
-
+show that deleted object
 ```
 
 ## 7. PUT /books/:bookid/rating
