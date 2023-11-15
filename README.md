@@ -36,7 +36,7 @@ Request:
 }
 ```
 
-## 3. POST /books/:bookid/rating
+## 3. POST /books/:book_id/rating
 
 ```
 {
@@ -44,7 +44,7 @@ Request:
 }
 ```
 
-## 4. GET /books/:bookid
+## 4. GET /books/:book_id
 
 ```
 {
@@ -57,7 +57,7 @@ Request:
 
 return 0 if no rating is set for a book
 
-## 5. PUT /books/:bookid
+## 5. PUT /books/:book_id
 
 ```
 {
@@ -67,13 +67,13 @@ return 0 if no rating is set for a book
 
 no isbn should be passed
 
-## 6. DEL /books/:bookid
+## 6. DEL /books/:book_id
 
 ```
 show that deleted object
 ```
 
-## 7. PUT /books/:bookid/rating
+## 7. PUT /books/:book_id/rating
 
 ```
 {
@@ -83,7 +83,7 @@ show that deleted object
 
 if rating is not found for a book, return error saying so
 
-## 8. GET /rating/:ratingid
+## 8. GET /rating/:rating_id
 
 ```
 {
@@ -97,7 +97,7 @@ if rating is not found for a book, return error saying so
 }
 ```
 
-## 9. DEL /rating/:ratingid
+## 9. DEL /rating/:rating_id
 
 ```
 show that deleted object
