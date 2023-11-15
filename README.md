@@ -9,11 +9,7 @@ Response:
         title: '',
         isbn: '',
     },
-    {
-        id: 215,
-        title: '',
-        isbn: '',
-    },
+    
 
 ]
 
